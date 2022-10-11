@@ -1,0 +1,9 @@
+GET http://127.0.0.1:5000/count
+Accept: application/json
+Content-Type: application/json
+
+{
+  "5": 10,
+  "10": 20,
+  "15": 20
+}
