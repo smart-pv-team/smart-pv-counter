@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask import request
 from app.simpson import Simpson
 from app.average import Average
@@ -13,16 +13,16 @@ def hello_world():
     return "Welcome to counter app"
 
 
-@app.route('/simpson', methods=['GET'])
+@app.route('/simpson', methods=['POST'])
 def count_integral():
     result = Simpson.count(request.json)
-    return str(result)
+    return jsonify(result)
 
 
-@app.route('/average', methods=['GET'])
+@app.route('/average', methods=['POST'])
 def count_average():
-    result = Average.count(request.json["points"])
-    return str(result)
+    result = Average.count(request.json)
+    return jsonify(result)
 
 
 if __name__ == '__main__':
