@@ -2,10 +2,12 @@ from flask import Flask, jsonify
 from flask import request
 from app.simpson import Simpson
 from app.average import Average
+from app.duration import Duration
 
 app = Flask(__name__)
 Simpson = Simpson()
 Average = Average()
+Duration = Duration()
 
 
 @app.route('/', methods=['GET'])
@@ -18,6 +20,10 @@ def count_integral():
     result = Simpson.count(request.json)
     return jsonify(result)
 
+@app.route('/duration', methods=['POST'])
+def count_duration():
+    result = Duration.count(request.json)
+    return jsonify(result)
 
 @app.route('/average', methods=['POST'])
 def count_average():
