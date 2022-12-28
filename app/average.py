@@ -5,7 +5,7 @@ class Average:
     @staticmethod
     def prepare_data(x):
         step = 0.7
-        return list(zip(x, list(np.arange(1, len(x)*step, step))))
+        return list(zip(x, list(np.arange(1, len(x) * step, step))))
 
     def count(self, x):
         if len(x) == 1:

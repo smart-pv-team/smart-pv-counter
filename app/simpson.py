@@ -1,6 +1,7 @@
+import datetime as dt
+
 import numpy as np
 from scipy import integrate
-import datetime as dt
 
 
 class Simpson:

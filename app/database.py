@@ -1,5 +1,6 @@
 import datetime
 import datetime as dt
+import os
 
 import pymongo as pymongo
 from dateutil import tz
@@ -7,7 +8,7 @@ from dateutil import tz
 
 class Database:
     def __init__(self):
-        self.database_url = "mongodb+srv://janicki:janicki@smartpv.dr74ruo.mongodb.net/smartpv?retryWrites=true&w=majority"
+        self.database_url = os.environ.get("MONGODB_URI")
         self.db = pymongo.MongoClient(self.database_url).smartpv
         self.consumption_entity_collection = self.db.consumptionEntity
         self.consumption_device_entity_collection = self.db.consumptionDeviceEntity
