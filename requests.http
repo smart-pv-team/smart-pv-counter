@@ -1,15 +1,78 @@
-GET http://127.0.0.1:5000/simpson
-Accept: application/json
-Content-Type: application/json
-
-{"2022-10-11T21:58:03.702+00:00":20.5,"2022-10-11T21:53:03.701+00:00":10.0,"2022-10-11T22:03:03.701+00:00":20.2}
-
-###
-
-GET http://127.0.0.1:5000/average
+POST http://127.0.0.1:5000/simpson
 Accept: application/json
 Content-Type: application/json
 
 {
-  "points": [1,2,3,4]
+  "2022-10-11T21:47:03.702+00:00": 0,
+  "2022-10-11T21:48:03.702+00:00": 110,
+  "2022-10-11T21:49:03.702+00:00": 10,
+  "2022-10-11T21:50:03.702+00:00": 0,
+  "2022-10-11T21:51:03.701+00:00": 10.0,
+  "2022-10-11T21:52:03.701+00:00": 10.0,
+  "2022-10-11T21:53:03.701+00:00": 0
 }
+
+###
+
+POST http://127.0.0.1:5000/average
+Accept: application/json
+Content-Type: application/json
+
+{
+  "points": [
+    1,
+    -2,
+    -3,
+    2
+  ]
+}
+
+###
+POST http://127.0.0.1:5000/integral/sum
+Accept: application/json
+Content-Type: application/json
+
+###
+POST http://127.0.0.1:5000/duration/sum
+Accept: application/json
+Content-Type: application/json
+
+###
+POST http://127.0.0.1:5000/integral/period
+Accept: application/json
+Content-Type: application/json
+
+{
+  "start_date": "2022-09-01T00:53:03.701+00:00",
+  "end_date": "2022-09-30T21:53:03.701+00:00"
+}
+
+###
+POST http://127.0.0.1:5000/integral/period/sum
+Accept: application/json
+Content-Type: application/json
+
+{
+  "start_date": "2022-09-01T00:53:03.701+00:00",
+  "end_date": "2022-09-30T21:53:03.701+00:00"
+}
+
+###
+POST http://127.0.0.1:5000/duration/period/sum
+Accept: application/json
+Content-Type: application/json
+
+{
+  "start_date": "2022-09-01T00:53:03.701+00:00",
+  "end_date": "2022-09-30T21:53:03.701+00:00"
+}
+
+###
+POST http://127.0.0.1:5000/draw
+Accept: application/json
+Content-Type: application/json
+
+###
+POST http://127.0.0.1:5000/duration/period
+Accept: application/json
+Content-Type: application/json
