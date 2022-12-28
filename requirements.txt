@@ -3,6 +3,5 @@ gunicorn
 numpy
 scipy
 pymongo
-dateutil
 datetime
 matplotlib.pyplot
