@@ -1,7 +1,6 @@
 import datetime
 
 import numpy as np
-from scipy import integrate
 import datetime as dt
 
 
