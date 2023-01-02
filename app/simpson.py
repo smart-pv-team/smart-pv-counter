@@ -12,12 +12,14 @@ class Simpson:
             key=lambda x: x[0])
         data_x = [x.timestamp() for x, _ in data_list]
         data_y = [float(y) for _, y in data_list]
-        min_el = data_x[0]
+        min_el = 0 if not data else data_x[0]
         data_x = [round(x - min_el, 2) for x in data_x]
         return data_x, data_y
 
     @staticmethod
     def simpson(x: np.array, y: np.array):
+        if not x.any():
+            return 0
         return integrate.simpson(y, x)
 
     def count(self, data: dict):

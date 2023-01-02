@@ -43,6 +43,16 @@ Accept: application/json
 Content-Type: application/json
 
 {
+  "start_date": "2022-09-18T00:53:03.701+00:00",
+  "end_date": "2022-09-30T21:53:03.701+00:00"
+}
+
+###
+POST http://127.0.0.1:5000/duration/period
+Accept: application/json
+Content-Type: application/json
+
+{
   "start_date": "2022-09-01T00:53:03.701+00:00",
   "end_date": "2022-09-30T21:53:03.701+00:00"
 }

@@ -25,5 +25,5 @@ class Drawer:
         #  ax2.set_ylim([0, 12])
         #  ax1.set_ylim([-10, 80])
         ax1.grid(True)
-        plt.title('Graph of energy and number of active devices versus time', size=22)
+        plt.title('Graph of average daily devoted energy and working hours per month', size=22)
         plt.show()
