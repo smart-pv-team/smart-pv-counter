@@ -55,21 +55,23 @@ def count_integral_sum():
     return jsonify(result)
 
 
-@app.route('/duration/period', methods=['POST'])
-def count_duration_period():
+@app.route('/duration/period/<deviceId>', methods=['POST'])
+def count_duration_period(deviceId):
     start_time = dt.datetime.strptime(request.json["start_date"], '%Y-%m-%dT%H:%M:%S.%f%z')
     end_time = dt.datetime.strptime(request.json["end_date"], '%Y-%m-%dT%H:%M:%S.%f%z')
     data = Database.get_period_devices_consumption(start_time, end_time)
-    result = {device: Duration.count(consumptions) for device, consumptions in data.items()}
+    consumptions = list(filter(lambda x: x[0] == deviceId, list(data.items())))[0][1]
+    result = Duration.count(consumptions)
     return jsonify(result)
 
 
-@app.route('/integral/period', methods=['POST'])
-def count_integral_period():
+@app.route('/integral/period/<deviceId>', methods=['POST'])
+def count_integral_period(deviceId):
     start_time = dt.datetime.strptime(request.json["start_date"], '%Y-%m-%dT%H:%M:%S.%f%z')
     end_time = dt.datetime.strptime(request.json["end_date"], '%Y-%m-%dT%H:%M:%S.%f%z')
     data = Database.get_period_devices_measurements(start_time, end_time)
-    result = {device: Simpson.count(measurements) for device, measurements in data.items()}
+    measurements = list(filter(lambda x: x[0] == deviceId, list(data.items())))[0][1]
+    result = Simpson.count(measurements)
     return jsonify(result)
 
 

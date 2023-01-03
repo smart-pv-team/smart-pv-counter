@@ -38,7 +38,7 @@ Accept: application/json
 Content-Type: application/json
 
 ###
-POST http://127.0.0.1:5000/integral/period
+POST http://127.0.0.1:5000/integral/period/630253d45e565a13b64cbf59
 Accept: application/json
 Content-Type: application/json
 
@@ -48,7 +48,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://127.0.0.1:5000/duration/period
+POST http://127.0.0.1:5000/duration/period/630253d55e565a13b64cbf5c
 Accept: application/json
 Content-Type: application/json
 
