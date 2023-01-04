@@ -18,22 +18,28 @@ class Database:
     def get_period_devices_consumption(self, start_date, end_date):
         consumptions = list(map(lambda consumption:
                                 (self.__datetime_to_datetime_without_seconds(consumption["date"]),
-                                 consumption["activeDevicesIds"]),
+                                 consumption["activeDevicesIds"],
+                                 consumption["farmId"]),
                                 self.consumption_entity_collection
                                 .find({"date": {'$lt': end_date, '$gt': start_date}})
                                 .sort([("date", pymongo.ASCENDING)])))
 
-        consumption_devices = list(map(lambda consumptionDevice: str(consumptionDevice["_id"]),
-                                       self.consumption_device_entity_collection.find({})))
+        consumption_devices = list(
+            map(lambda consumptionDevice: (str(consumptionDevice["_id"]), consumptionDevice["farmId"]),
+                self.consumption_device_entity_collection.find({})))
 
-        result = {device: {} for device in consumption_devices}
+        result = {device[0]: {} for device in consumption_devices}
 
         for consumption in consumptions:
             date = consumption[0]
             active_devices = consumption[1]
+            farmId = consumption[2]
             for device in consumption_devices:
-                result[str(device)][
-                    date.strftime('%Y-%m-%dT%H:%M:%S.%f%z')] = True if device in active_devices else False
+                deviceId = device[0]
+                deviceFarmId = device[1]
+                if deviceFarmId == farmId:
+                    result[str(deviceId)][
+                        date.strftime('%Y-%m-%dT%H:%M:%S.%f%z')] = True if deviceId in active_devices else False
 
         return result
 
